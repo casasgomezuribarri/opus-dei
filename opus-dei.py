@@ -524,14 +524,14 @@ def welcome_message():
     
     banner = rf"""
 
-                     ___
-                    /   \         ____
-              -----/ (o) \-------/    \
-                   \___  /       \__  /              {Fore.LIGHTRED_EX}  OPUS dei v3.0{Style.RESET_ALL}
-                       ||           ||               {Fore.LIGHTRED_EX}  Mario González-Jiménez{Style.RESET_ALL}
-                      //\\          //\\             {Fore.LIGHTRED_EX}  22 Sept 2025 - University of Glasgow{Style.RESET_ALL}
-                     //  \\        //  \\
-                    ^^    ^^      ^^    ^^
+                            ___
+                      __   /   \  _____
+                     /(o)\/     \/    /\
+                     \___/\     /\___/  \           {Fore.LIGHTRED_EX}  OPUS dei v3.0{Style.RESET_ALL}
+                    /     /\___/     \ / \          {Fore.LIGHTRED_EX}  Mario González-Jiménez{Style.RESET_ALL}
+                   /     / / /\ \     \ / \         {Fore.LIGHTRED_EX}  22 Sept 2025 - University of Glasgow{Style.RESET_ALL}
+                  /     / / /  \ \     \  /
+                 /     ^ ^ ^    ^ ^     \/
             """
     print(banner)
     
