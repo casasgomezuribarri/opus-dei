@@ -430,11 +430,6 @@ def find_opus_files(directory_path):
     
     return opus_files
 
-# error = '/Users/ivancasas/GitHub/MIRS/Data/Spectra/MIRS/Mozambique/raw/INFRARED ALL SPETRAL_MOZ/AF-M-UF-UK-20240327-20240327-20240610-TA-210-CDC-I-216.0'
-# works = '/Users/ivancasas/GitHub/MIRS/Data/Spectra/MIRS/Mozambique/raw/INFRARED ALL SPETRAL_MOZ/-M-UF-NP-241211-NA-250602-TA-222-CDC-I-3182.0'
-
-# opus_filepath = error
-
 def convert_opus_file(opus_filepath, output_formats, show_individual_files=False):
     """
     Convert a single OPUS file to the specified formats.
