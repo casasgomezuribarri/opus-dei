@@ -430,6 +430,10 @@ def find_opus_files(directory_path):
     
     return opus_files
 
+# error = '/Users/ivancasas/GitHub/MIRS/Data/Spectra/MIRS/Mozambique/raw/INFRARED ALL SPETRAL_MOZ/AF-M-UF-UK-20240327-20240327-20240610-TA-210-CDC-I-216.0'
+# works = '/Users/ivancasas/GitHub/MIRS/Data/Spectra/MIRS/Mozambique/raw/INFRARED ALL SPETRAL_MOZ/-M-UF-NP-241211-NA-250602-TA-222-CDC-I-3182.0'
+
+# opus_filepath = error
 
 def convert_opus_file(opus_filepath, output_formats, show_individual_files=False):
     """
@@ -454,16 +458,21 @@ def convert_opus_file(opus_filepath, output_formats, show_individual_files=False
         # Extract absorption spectrum data
         absorption_spectrum = opus_reader["AB"]
 
-        # Extract wavenumber range parameters
+        # Extract wavenumber range parameters - old
+        # first_wavenumber = opus_reader["AB Data Parameter"]["FXV"]
+        # last_wavenumber = opus_reader["AB Data Parameter"]["LXV"]
+        # wavenumber_step = -(first_wavenumber - last_wavenumber) / len(absorption_spectrum)
+        # wavenumbers = np.arange(first_wavenumber, last_wavenumber, wavenumber_step)
+        # full_spectrum = np.column_stack((wavenumbers, absorption_spectrum))
+
+        # Extract wavenumber range parameters - new
         first_wavenumber = opus_reader["AB Data Parameter"]["FXV"]
         last_wavenumber = opus_reader["AB Data Parameter"]["LXV"]
-        wavenumber_step = -(first_wavenumber - last_wavenumber) / len(absorption_spectrum)
-
-        # Create the wavenumber axis
-        wavenumbers = np.arange(first_wavenumber, last_wavenumber, wavenumber_step)
-
-        # Create the full spectrum array (wavenumber, absorption)
+        wavenumber_step = (last_wavenumber - first_wavenumber) / (len(absorption_spectrum) -1)
+        wavenumbers = first_wavenumber + np.arange(len(absorption_spectrum)) * wavenumber_step
         full_spectrum = np.column_stack((wavenumbers, absorption_spectrum))
+
+
 
         # Save the full spectrum to a .dpt file if requested
         if 'dpt' in output_formats:
@@ -763,6 +772,8 @@ def main():
         # Write the errors.txt file.
         try:
             with open(error_file_path, 'w', encoding='utf-8') as ef:
+                ef.write("Hi there :) \n")
+
                 for idx, rec in enumerate(error_log):
                     # path to problematic file
                     ef.write(rec['file'] + "\n")
