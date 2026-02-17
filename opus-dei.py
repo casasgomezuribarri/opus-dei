@@ -460,14 +460,12 @@ def convert_opus_file(opus_filepath, output_formats, show_individual_files=False
         # wavenumbers = np.arange(first_wavenumber, last_wavenumber, wavenumber_step)
         # full_spectrum = np.column_stack((wavenumbers, absorption_spectrum))
 
-        # Extract wavenumber range parameters - new
+        # Extract wavenumber range parameters - new - 
         first_wavenumber = opus_reader["AB Data Parameter"]["FXV"]
         last_wavenumber = opus_reader["AB Data Parameter"]["LXV"]
         wavenumber_step = (last_wavenumber - first_wavenumber) / (len(absorption_spectrum) -1)
         wavenumbers = first_wavenumber + np.arange(len(absorption_spectrum)) * wavenumber_step
         full_spectrum = np.column_stack((wavenumbers, absorption_spectrum))
-
-
 
         # Save the full spectrum to a .dpt file if requested
         if 'dpt' in output_formats:
@@ -767,7 +765,7 @@ def main():
         # Write the errors.txt file.
         try:
             with open(error_file_path, 'w', encoding='utf-8') as ef:
-                ef.write("Hi there :) \n")
+                ef.write("Hi there :)) \n")
 
                 for idx, rec in enumerate(error_log):
                     # path to problematic file
