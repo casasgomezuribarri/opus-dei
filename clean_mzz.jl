@@ -2,8 +2,8 @@
 
 
 # paths
-root_dir = "/Users/ivancasas/Library/CloudStorage/OneDrive-UniversityofGlasgow/Doreen Josen Siria (PGR)'s files - CLEANED SEMI-FIELD INFRARED DATA/MIRS-SEMIFIELD/Test"
-backup_dir = "/Users/ivancasas/Library/CloudStorage/OneDrive-UniversityofGlasgow/Doreen Josen Siria (PGR)'s files - CLEANED SEMI-FIELD INFRARED DATA/MIRS-SEMIFIELD/Backup"
+root_dir = "/Users/ivancasas/GitHub/MIRS/Data/phd_data"
+backup_dir = "/Users/ivancasas/GitHub/MIRS/Data/backup"
 mkpath(backup_dir)
 
 
@@ -88,7 +88,7 @@ for i in otr_list
     println(isfile(i))
 end
 
-# delete ._ files
+# common annoying files: ._, DS_Store
 for (root, _, files) in walkdir(root_dir)
     for file in files
         if startswith(file, "._")
